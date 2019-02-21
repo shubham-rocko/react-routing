@@ -20,7 +20,9 @@ class NewPost extends Component {
     };
     axios.post("/posts", data).then(response => {
       console.log(response);
-      this.setState({ submitted: true });
+    //   this.setState({ submitted: true });
+    // this.props.history.push('/posts'); //push into route_stack so back button working
+    this.props.history.replace('/posts'); // just replace current route so back button of browser is not working
     });
   };
 
