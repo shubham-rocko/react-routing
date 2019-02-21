@@ -20,20 +20,25 @@ class NewPost extends Component {
     };
     axios.post("/posts", data).then(response => {
       console.log(response);
-    //   this.setState({ submitted: true });
-    // this.props.history.push('/posts'); //push into route_stack so back button working
-    this.props.history.replace('/posts'); // just replace current route so back button of browser is not working
+      //   this.setState({ submitted: true });
+      // this.props.history.push('/posts'); //push into route_stack so back button working
+      this.props.history.replace("/posts"); // just replace current route so back button of browser is not working
     });
   };
 
+  componentDidMount() {
+    //this.props.history.replace('/posts'); //if user is unAuthenticated
+    console.log(this.props);
+  }
+
   render() {
-      var redirect = null;
-      if(this.state.submitted){
-          redirect = <Redirect to="/posts" />;
-      }
+    var redirect = null;
+    if (this.state.submitted) {
+      redirect = <Redirect to="/posts" />;
+    }
     return (
       <div className="NewPost">
-        { redirect }
+        {redirect}
         <h1>Add a Post</h1>
         <label>Title</label>
         <input
